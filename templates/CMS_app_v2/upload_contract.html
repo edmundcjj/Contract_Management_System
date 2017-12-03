@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<!-- Using templates tags to extend base.html template to avoid writing the same code again -->
+{% extends "CMS_app_v2/base.html" %}
+
+<!-- HTML5 code unique to this page -->
+{% block body_block %}
+  <head>
+    <!-- css file unique to this page -->
+    <link rel="stylesheet" href="/static/css/form.css">
+  </head>
+
+  <h1>UPLOAD DOCUMENTS HERE</h1>
+
+  <!-- Form with a post method to post data to the database, actual handling of data will reside in the views.py functions -->
+  <form enctype="multipart/form-data" method="post">
+
+    <!-- Cross Site Request Forgery protection for django forms, must be there or else it will generate an error -->
+    {% csrf_token %}
+
+   <!--///////////////// TEXT FIELDS ///////////////////-->
+   <div class="field-group">
+     <label for="{{ form.title.id_for_label }}" class="label">Title</label>
+     <div class="field">
+       <!-- Rendering the title attribute of Document model inherited in forms.py into the HTML form -->
+       {{form.title}}
+     </div>
+   </div>
+
+   <!--///////////////// DOCUMENT UPLOAD ///////////////////-->
+   <div class="field-group">
+     <label for="{{ form.document.id_for_label }}" class="label">Document</label>
+     <div class="field">
+       <!-- Rendering the document attribute of Document model inherited in forms.py into the HTML form -->
+       {{form.document}}
+     </div>
+   </div>
+
+   <!--///////////////// TEXTAREA ///////////////////-->
+   <div class="field-group">
+     <label for="{{ form.description.id_for_label }}" class="label">Description</label>
+     <div class="field">
+       <!-- Rendering the description attribute of Document model inherited in forms.py into the HTML form -->
+       {{ form.description }}
+     </div>
+   </div>
+
+   <!--///////////////// SELECT MENU ///////////////////-->
+   <div class="field-group">
+     <label for="{{ form.status.id_for_label }}" class="label">Status</label>
+     <div class="field">
+       <!-- Rendering the status attribute of Document model inherited in forms.py into the HTML form -->
+       {{ form.status }}
+     </div>
+   </div>
+
+   <!--///////////////// SUBMIT BUTTON ///////////////////-->
+  <div class="field-group">
+    <div class="field">
+      <input id="saveForm" type="submit" value="UPLOAD">
+    </div>
+  </div>
+
+  </form>
+{% endblock %}

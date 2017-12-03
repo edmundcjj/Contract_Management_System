@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<!-- Using templates tags to extend base.html template to avoid writing the same code again -->
+{% extends "CMS_app_v2/base.html" %}
+
+<!-- HTML5 code unique to this page -->
+{% block body_block %}
+  <head>
+    <!-- css file unique to this page -->
+    <link rel="stylesheet" href="/static/css/index.css">
+  </head>
+
+  <!-- Dashboard first row -->
+  <div class="full">
+    <div class="third">
+      <div class="tile_title" id="draft_title_color">
+        <a href="/admin/CMS_app_v2/document/?status__exact=draft"><h2>DRAFT STATUS</h2></a>
+      </div>
+      <div class="tile_body" id="draft_body_color">
+        <a href="admin/CMS_app_v2/document/?status__exact=draft"><p>{{ draft_documents }}</p></a>
+      </div>
+    </div>
+    <div class="third">
+      <div class="tile_title" id="pap_title_color">
+        <a href="/admin/CMS_app_v2/document/?status__exact=PAP"><h2>PENDING APPROVAL STATUS</h2></a>
+      </div>
+      <div class="tile_body" id="pap_body_color">
+        <a href="/admin/CMS_app_v2/document/?status__exact=PAP"><p>{{ pending_approval_documents }}</p></a>
+      </div>
+    </div>
+    <div class="third">
+      <div class="tile_title" id="pac_title_color">
+        <a href="/admin/CMS_app_v2/document/?status__exact=PAC"><h2>PENDING ACCEPTANCE STATUS</h2></a>
+      </div>
+      <div class="tile_body" id="pac_body_color">
+        <a href="/admin/CMS_app_v2/document/?status__exact=PAC"><p>{{ pending_acceptance_documents }}</p></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard second row -->
+  <div class="full">
+    <div class="third">
+      <div class="tile_title" id="active_title_color">
+        <a href="/admin/CMS_app_v2/document/?status__exact=active"><h2>ACTIVE STATUS</h2></a>
+      </div>
+      <div class="tile_body" id="active_body_color">
+        <a href="/admin/CMS_app_v2/document/?status__exact=active"><p>{{ active_documents }}</p></a>
+      </div>
+    </div>
+    <div class="third">
+      <div class="tile_title" id="closed_title_color">
+        <a href="/admin/CMS_app_v2/document/?status__exact=closed"><h2>CLOSED STATUS</h2></a>
+      </div>
+      <div class="tile_body" id="closed_body_color">
+        <a href="/admin/CMS_app_v2/document/?status__exact=closed"><p>{{ closed_document }}</p></a>
+      </div>
+    </div>
+    <div class="third">
+      <div class="tile_title" id="empty_title_color">
+      </div>
+      <div class="tile_body" id="empty_body_color">
+      </div>
+    </div>
+  </div>
+{% endblock %}

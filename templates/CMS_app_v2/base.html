@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- Base html file to be reused for the different HTML pages, to practice code reusability-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Contract Management System</title>
+
+    <!-- /xxx/xxx/xxx.css is a relative url to css file to indicate this is
+    the location to look up for the css file -->
+    <link rel="stylesheet" href="/static/css/base.css">
+  </head>
+  <body>
+
+    <!-- HTML5 code for the navigation bar at the top -->
+    <header class="header">
+
+      <!-- Template tags indicates an action to look for name="index" located in project's folder urls.py -->
+      <h1 class="logo"><a href="{% url 'index' %}">CMS Dashboard</a></h1>
+        <ul class="main-nav">
+
+          <!-- Template tags indicates an action to look for the admin's name="index" located in project's folder urls.py -->
+          <li><a href="{% url 'admin:index' %}">Admin</a></li>
+
+          <!-- Template tags indicates an action to look for app's name="upload" located in app's folder urls.py -->
+          <li><a href="{% url 'CMS_app_v2:upload' %}">Upload</a></li>
+        </ul>
+    </header>
+
+    <div class="container">
+
+      <!-- To indicate that code outside of this file is to be written in the block provided -->
+      {% block body_block %}
+      {% endblock %}
+    </div>
+
+  </body>
+</html>
